@@ -7,7 +7,7 @@ from keras_audio.library.utility.download_utils import reporthook
 gtzan_labels = {0: 'blues', 1: 'classical', 2: 'country', 3: 'disco', 4: 'hiphop', 5: 'jazz', 6: 'metal',
                 7: 'pop', 8: 'reggae', 9: 'rock'}
 
-gtzan_music_speech_labels = {0: 'music', 1: 'speech'}
+gtzan_categories = {0: 'music', 1: 'speech', 2: 'sound_effect'}
 
 def download_gtzan_music_speech(data_dir_path):
     flag_file = os.path.join(data_dir_path, 'music_speech_done.txt')

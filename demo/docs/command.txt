@@ -1,0 +1,5 @@
+Get-Random -InputObject (Get-Content ./files.txt) -Count 64 > dataset.txt
+# Dataset is from ESC-50 (https://github.com/karoldvl/ESC-50)
+# Extract the folder ESC-50-master to demo/very_large_data/
+# Copy or append the generated dataset.txt to /demo/lists/<your model name>/dataset.txt
+# Manually create labels.txt in /demo/lists/<your model name> to match labels in keras_audio/library/utility/gtzan_loader.py

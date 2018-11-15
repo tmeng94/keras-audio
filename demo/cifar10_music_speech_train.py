@@ -5,12 +5,12 @@ from keras_audio.library.utility.gtzan_loader import download_gtzan_music_speech
 def load_audio_path_label_pairs(max_allowed_pairs=None):
     download_gtzan_music_speech('./very_large_data/gtzan')
     audio_paths = []
-    with open('./data/lists/music_speech/test_songs_gtzan_list.txt', 'rt') as file:
+    with open('./data/lists/music_speech/dataset.txt', 'rt') as file:
         for line in file:
             audio_path = './very_large_data/' + line.strip()
             audio_paths.append(audio_path)
     pairs = []
-    with open('./data/lists/music_speech/test_gt_gtzan_list.txt', 'rt') as file:
+    with open('./data/lists/music_speech/labels.txt', 'rt') as file:
         for line in file:
             label = int(line)
             if max_allowed_pairs is None or len(pairs) < max_allowed_pairs:

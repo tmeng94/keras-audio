@@ -1,18 +1,18 @@
 from random import shuffle
 
 from keras_audio.library.cifar10 import Cifar10AudioClassifier
-from keras_audio.library.utility.gtzan_loader import download_gtzan_genres_if_not_found, gtzan_music_speech_labels
+from keras_audio.library.utility.gtzan_loader import download_gtzan_genres_if_not_found, gtzan_categories
 
 
 def load_audio_path_label_pairs(max_allowed_pairs=None):
     download_gtzan_genres_if_not_found('./very_large_data/gtzan')
     audio_paths = []
-    with open('./data/lists/music_speech/test_songs_gtzan_list.txt', 'rt') as file:
+    with open('./data/lists/music_speech/dataset.txt', 'rt') as file:
         for line in file:
             audio_path = './very_large_data/' + line.strip()
             audio_paths.append(audio_path)
     pairs = []
-    with open('./data/lists/music_speech/test_gt_gtzan_list.txt', 'rt') as file:
+    with open('./data/lists/music_speech/labels.txt', 'rt') as file:
         for line in file:
             label = int(line)
             if max_allowed_pairs is None or len(pairs) < max_allowed_pairs:
@@ -34,8 +34,8 @@ def main():
         audio_path, actual_label_id = audio_path_label_pairs[i]
         predicted_label_id = classifier.predict_class(audio_path)
         print(audio_path)
-        predicted_label = gtzan_music_speech_labels[predicted_label_id]
-        actual_label = gtzan_music_speech_labels[actual_label_id]
+        predicted_label = gtzan_categories[predicted_label_id]
+        actual_label = gtzan_categories[actual_label_id]
 
         print('predicted: ', predicted_label, 'actual: ', actual_label)
 
